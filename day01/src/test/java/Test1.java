@@ -1,5 +1,6 @@
-import cc.eslink.UserInfo;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *@ClassName Test1
@@ -12,5 +13,8 @@ public class Test1 {
 
     @Test
     public void test() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext();
+
+
     }
 }

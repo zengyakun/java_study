@@ -1,4 +1,4 @@
-package cc.eslink;
+package cc.eslink.lombok;
 
 import lombok.Builder;
 import lombok.Getter;
