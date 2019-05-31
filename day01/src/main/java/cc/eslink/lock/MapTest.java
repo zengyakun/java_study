@@ -17,8 +17,8 @@ import java.util.concurrent.CountDownLatch;
  **/
 public class MapTest {
 
-        private static Map<String, String> map = new HashMap<>();
-//    private static Map<String, String> map = new ConcurrentHashMap<>();
+//        private static Map<String, String> map = new HashMap<>();
+    private static Map<String, String> map = new ConcurrentHashMap<>();
 
     private static CountDownLatch latch;
 
