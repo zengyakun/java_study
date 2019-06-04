@@ -12,19 +12,13 @@ import java.lang.reflect.Proxy;
  *@Version 1.0
  **/
 public class JavaProxyInvocationHandler implements InvocationHandler {
-
     private Object obj;
-
     public JavaProxyInvocationHandler(Object obj) {
         this.obj = obj;
     }
-
     public Object newProxyInstance() {
-        return Proxy.newProxyInstance(obj.getClass().getClassLoader(),
-                obj.getClass().getInterfaces(),
-                this);
+        return Proxy.newProxyInstance(obj.getClass().getClassLoader(), obj.getClass().getInterfaces(), this);
     }
-
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("invoke before");
@@ -32,7 +26,6 @@ public class JavaProxyInvocationHandler implements InvocationHandler {
         System.out.println("invoke after");
         return result;
     }
-
     public static void main(String[] args) {
         JavaProxyInvocationHandler proxy = new JavaProxyInvocationHandler(new HelloService());
         IHelloService service = (IHelloService) proxy.newProxyInstance();
