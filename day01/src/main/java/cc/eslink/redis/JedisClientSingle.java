@@ -66,4 +66,9 @@ public class JedisClientSingle {
         return result;
     }
 
+    public Long setnx(String key, String value) {
+        Jedis jedis = jedisPool.getResource();
+        return jedis.setnx(key, value);
+    }
+
 }

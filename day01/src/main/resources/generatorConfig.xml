@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="my_tables" targetRuntime="MyBatis3">
+        <!-- 注释相关设置 -->
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释, true: 是; false: 否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 测试 -->
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://testeslinkmysqlwaiwang.mysql.rds.aliyuncs.com:3210/eslink_engineering?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root" password="AD8CA9B30C88DC0089991AA98F819CD6"/>-->
+
+        <!-- 本地 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root" password="123456"/>
+
+        <!-- 默认false, 把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer; 为 true 时把 JDBC DECIMAL 和
+            NUMERIC 类型解析为 java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="cc.eslink.engineering.domain.entity" targetProject="src/main/java">
+            <!-- enableSubPackages: 是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false"/>
+        </javaModelGenerator>
+        <table tableName="eng_budget_assess"/>
+        <table tableName="eng_budget_item"/>
+        <table tableName="eng_budget_stuff"/>
+        <table tableName="eng_datasource"/>
+        <table tableName="eng_dictionary"/>
+        <table tableName="eng_element_object"/>
+        <table tableName="eng_fee"/>
+        <table tableName="eng_fee_item"/>
+        <table tableName="eng_fee_type"/>
+        <table tableName="eng_finish_arrange"/>
+        <table tableName="eng_node_config"/>
+        <table tableName="eng_operate_config"/>
+        <table tableName="eng_project"/>
+        <table tableName="eng_project_item"/>
+        <table tableName="eng_project_item_info"/>
+        <table tableName="eng_project_item_task"/>
+        <table tableName="eng_project_process"/>
+        <table tableName="eng_signing_fee"/>
+        <table tableName="eng_stuff"/>
+        <table tableName="eng_templet"/>
+        <table tableName="eng_templet_detail"/>
+        <table tableName="eng_templet_relation"/>
+        <table tableName="eng_templet_type"/>
+        <table tableName="eng_type"/>
+    </context>
+</generatorConfiguration>
+
+<!--
+在命令行中执行：mvn mybatis-generator:generate
+-->
