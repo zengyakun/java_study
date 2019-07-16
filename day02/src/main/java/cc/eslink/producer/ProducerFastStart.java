@@ -14,7 +14,7 @@ import java.util.Properties;
  **/
 public class ProducerFastStart {
 
-    public static final String brokerList = "server-1:9092";
+    public static final String brokerList = "server-0:9092";
     public static final String topic = "topic-demo";
 
     public static void main(String[] args) {
