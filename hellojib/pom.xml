@@ -55,17 +55,17 @@
                         <image>registry.cn-hangzhou.aliyuncs.com/jib_docker/jibfirst/hellojib:${project.version}</image>
                         <auth>
                             <username>18268189945</username>
-                            <password>1990zyk1020</password>
+                            <password>123456</password>
                         </auth>
                     </to>
                     <allowInsecureRegistries>true</allowInsecureRegistries>
                     <!--容器相关的属性-->
                     <container>
                         <!--jvm内存参数-->
-                        <jvmFlags>
-                            <jvmFlag>-Xms4g</jvmFlag>
-                            <jvmFlag>-Xmx4g</jvmFlag>
-                        </jvmFlags>
+                        <!--<jvmFlags>-->
+                            <!--<jvmFlag>-Xms4g</jvmFlag>-->
+                            <!--<jvmFlag>-Xmx4g</jvmFlag>-->
+                        <!--</jvmFlags>-->
                         <!--要暴露的端口-->
                         <ports>
                             <port>8080</port>
