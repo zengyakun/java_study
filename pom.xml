@@ -9,12 +9,15 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>day01</module>
-        <module>day02</module>
-        <module>day03</module>
+        <module>md20191201</module>
+        <module>md20191202</module>
+        <module>md20191203</module>
+        <module>md20191204</module>
+        <module>md20191205</module>
+        <module>md20191206</module>
+        <module>md20191207</module>
         <module>jib</module>
-        <module>test</module>
-        <module>test07</module>
+        <module>md20191218</module>
     </modules>
 
     <dependencyManagement>

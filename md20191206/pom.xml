@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.eslink</groupId>
-    <artifactId>test05</artifactId>
+    <artifactId>md20191206</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>test05</name>
     <description>Demo project for Spring Boot</description>
