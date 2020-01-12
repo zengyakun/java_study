@@ -1,2 +1,13 @@
 /.idea
 /day02/target
+/md20191218/target/
+/md20191204/target/
+/md20191203/target/classes/
+/md20191202/target/classes/
+/md20191201/target/
+/nodejs/node_modules/
+/node_modules/
+/package-lock.json
+/md20191203/src/main/java/CompileMain.class
+/md20191204/src/main/java/cc/eslink/jvm/JVMTestForJava.class
+/md20191218/src/test/java/com/example/demo/Season.class

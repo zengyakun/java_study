@@ -71,7 +71,8 @@ public class StackTest {
                     //为空或者栈顶元素为左括号或者当前操作符大于栈顶操作符直接压栈
                     opStack.push(item);
                 } else {
-                    //否则将栈中元素出栈如队，直到遇到大于当前操作符或者遇到左括号时
+                    //当运算符不为空时且栈顶操作符的优先级大于或等于当前运算符优先级时，循环执行出栈操作并加入list中，
+                    // 直到遇到优先级小于当前运算符或者左括号（的元素为止。循环执行完后再将当前运算符压栈
                     while (!opStack.isEmpty() && !"(".equals(opStack.peek())) {
                         if (priority(item) <= priority(opStack.peek())) {
                             suffixList.add(opStack.pop());
