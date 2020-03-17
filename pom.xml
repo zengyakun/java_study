@@ -19,6 +19,8 @@
         <module>jib</module>
         <module>md20191218</module>
         <module>slf4j-demo</module>
+        <module>sentinel-demo</module>
+        <module>jjwt-demo</module>
     </modules>
 
     <dependencyManagement>
