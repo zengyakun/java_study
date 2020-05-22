@@ -1,0 +1,51 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 1
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "eslink",
+            "password": "eslink123456",
+            "connection": [
+              {
+                "querySql": [
+                  "select * from biz_address limit 1000"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://testeslinkmysqlwaiwang.mysql.rds.aliyuncs.com:3210/eslink_safecheck_old?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "oraclewriter",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "*"
+            ],
+            "preSql": [
+              "delete from \"biz_address\""
+            ],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:oracle:thin:@127.0.0.1:1521:orcl",
+                "table": [
+                  "\"biz_address\""
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

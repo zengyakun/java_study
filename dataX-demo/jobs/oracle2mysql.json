@@ -1,0 +1,52 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 1
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "oraclereader",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "where": "",
+            "connection": [
+              {
+                "querySql": [
+                  "select * from \"biz_address\" where rownum <= 1000"
+                ],
+                "jdbcUrl": [
+                  "jdbc:oracle:thin:@127.0.0.1:1521:orcl"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "*"
+            ],
+            "preSql": [
+              "TRUNCATE biz_address"
+            ],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:mysql://127.0.0.1:3306/datax?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8",
+                "table": [
+                  "biz_address"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

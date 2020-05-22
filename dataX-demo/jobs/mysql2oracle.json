@@ -1,0 +1,51 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 1
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "eslink123",
+            "password": "Eslink@123",
+            "connection": [
+              {
+                "querySql": [
+                  "select * from eng_param limit 1000"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://121.36.143.205:3306/eslink_engineering?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "oraclewriter",
+          "parameter": {
+            "username": "eslink123",
+            "password": "123456",
+            "column": [
+              "*"
+            ],
+            "preSql": [
+              "delete from ENG_PARAM"
+            ],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:oracle:thin:@127.0.0.1:1521:orcl",
+                "table": [
+                  "ENG_PARAM"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

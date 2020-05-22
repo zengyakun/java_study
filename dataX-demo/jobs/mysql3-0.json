@@ -1,0 +1,70 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 1
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "eslink",
+            "password": "eslink123456",
+            "connection": [
+              {
+                "querySql": [
+                  "select * from biz_address where tenant_id='0185'"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://testeslinkmysqlwaiwang.mysql.rds.aliyuncs.com:3210/eslink_safecheck_old?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "parameter": {
+            "writeMode": "insert",
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "*"
+            ],
+            "session": [
+              "set session sql_mode='ANSI'"
+            ],
+            "preSql": [
+            ],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:mysql://127.0.0.1:3306/datax?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8",
+                "table": [
+                  "biz_address_0185"
+                ]
+              }
+            ]
+          }
+        },
+        "transformer": [
+          {
+            "name": "dx_groovy",
+            "parameter": {
+              "code": "record.setColumn(1, new StringColumn(\"******\"));\nreturn record;",
+              "extraPackage": []
+            }
+          },
+          {
+            "name": "dx_groovy",
+            "parameter": {
+              "code": "Column column = record.getColumn(0);\nRandom random = new Random();\nString addrId = LocalDateTime.now().format(DateTimeFormatter.ofPattern(\"yyyyMMddHHmmssSSS\"))+ Stream.generate((Supplier) () -> String.valueOf(random.nextInt(10))).limit(10).collect(Collectors.joining());\nrecord.setColumn(0, new StringColumn(addrId));\nreturn record;",
+              "extraPackage": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

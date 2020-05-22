@@ -1,0 +1,55 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 1
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "eslink123",
+            "password": "Eslink@123",
+            "connection": [
+              {
+                "querySql": [
+                  "select * from biz_address"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://121.36.143.205:3306/eslink_safecheck_old?useUnicode=true&characterEncoding=UTF-8"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "parameter": {
+            "writeMode": "insert",
+            "username": "eslink",
+            "password": "eslink123456",
+            "column": [
+              "*"
+            ],
+            "session": [
+              "set session sql_mode='ANSI'"
+            ],
+            "preSql": [
+              "delete from biz_address2"
+            ],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:mysql://testeslinkmysqlwaiwang.mysql.rds.aliyuncs.com:3210/eslink_safecheck_old?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8",
+                "table": [
+                  "biz_address2"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

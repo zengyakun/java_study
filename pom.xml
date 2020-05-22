@@ -21,6 +21,8 @@
         <module>slf4j-demo</module>
         <module>sentinel-demo</module>
         <module>jjwt-demo</module>
+        <module>dataX-demo</module>
+        <module>sql-demo</module>
     </modules>
 
     <dependencyManagement>
