@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.eslink.fundanalyze.mapper.FundNetDao">
+
+	<!--基础实体映射-->
+	<resultMap id="AllColumnMap" type="FundNet">
+		<!--主键-->
+		<id property="id" column="id" />
+		<!--基金代码-->
+		<result property="fundCode" column="fund_code" />
+		<!--净值日期-->
+		<result property="netDate" column="net_date" />
+		<!--单位净值-->
+		<result property="netValue" column="net_value" />
+		<!--累计净值-->
+		<result property="totalValue" column="total_value" />
+		<!--日增长率-->
+		<result property="dailyRate" column="daily_rate" />
+		<!--申购状态-->
+		<result property="subStatus" column="sub_status" />
+		<!--赎回状态-->
+		<result property="redStatus" column="red_status" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="all_column">
+		id, fund_code, net_date, net_value, total_value, daily_rate, sub_status, red_status
+	</sql>
+
+	<!--auto generated Code-->
+	<insert id="insertList">
+		INSERT INTO fund_net (
+		<include refid="all_column"/>
+		)VALUES
+		<foreach collection="pojos" item="pojo" index="index" separator=",">
+			(
+			#{pojo.id},
+			#{pojo.fundCode},
+			#{pojo.netDate},
+			#{pojo.netValue},
+			#{pojo.totalValue},
+			#{pojo.dailyRate},
+			#{pojo.subStatus},
+			#{pojo.redStatus}
+			)
+		</foreach>
+	</insert>
+
+	<select id="isExists" resultType="java.lang.Integer">
+		select count(*) from fund_net where fund_code = #{pojo.fundCode} and net_date = #{pojo.netDate}
+	</select>
+</mapper>

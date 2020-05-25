@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.eslink.fundanalyze.mapper.FundDao">
+
+    <!--基础实体映射-->
+    <resultMap id="AllColumnMap" type="Fund">
+        <!--主键-->
+        <id property="id" column="id"/>
+        <!--基金代码-->
+        <result property="fundCode" column="fund_code"/>
+        <!--基金名称-->
+        <result property="fundName" column="fund_name"/>
+        <!--基金类型-->
+        <result property="fundType" column="fund_type"/>
+        <!--发行日期-->
+        <result property="issueDate" column="issue_date"/>
+        <!--资产规模-->
+        <result property="asset" column="asset"/>
+        <!--基金经理-->
+        <result property="fundManager" column="fund_manager"/>
+    </resultMap>
+
+
+    <!-- 通用查询结果列-->
+    <sql id="all_column">
+        id, fund_code, fund_name, fund_type, issue_date, asset, fund_manager
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO fund (id, fund_code, fund_name, fund_type, issue_date, asset, fund_manager)
+        VALUES (#{pojo.id},
+                #{pojo.fundCode},
+                #{pojo.fundName},
+                #{pojo.fundType},
+                #{pojo.issueDate},
+                #{pojo.asset},
+                #{pojo.fundManager})
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO fund (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.fundCode},
+            #{pojo.fundName},
+            #{pojo.fundType},
+            #{pojo.issueDate},
+            #{pojo.asset},
+            #{pojo.fundManager}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE fund
+        <set>
+            <if test="pojo.fundName != null">`fund_name` = #{pojo.fundName},</if>
+            <if test="pojo.fundType != null">`fund_type` = #{pojo.fundType},</if>
+            <if test="pojo.issueDate != null">`issue_date` = #{pojo.issueDate},</if>
+            <if test="pojo.asset != null">`asset` = #{pojo.asset},</if>
+            <if test="pojo.fundManager != null">`fund_manager` = #{pojo.fundManager}</if>
+        </set>
+        WHERE fund_code = #{pojo.fundCode}
+    </update>
+
+    <select id="queryByCodeList" resultType="java.lang.String">
+        select fund_code from fund where fund_code in
+        <foreach collection="fundCodeList" index="index" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="queryCodeList" resultType="java.lang.String">
+        select fund_code from fund
+    </select>
+</mapper>

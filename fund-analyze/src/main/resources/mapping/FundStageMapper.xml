@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.eslink.fundanalyze.mapper.FundStageDao">
+
+    <!--基础实体映射-->
+    <resultMap id="AllColumnMap" type="FundStage">
+        <!--主键-->
+        <id property="id" column="id"/>
+        <!--基金代码-->
+        <result property="fundCode" column="fund_code"/>
+        <!--周期类型：0-1周；1-1月；2-3月；3-6月；4-今年；5-1年；6-2年；7-3年；8-成立以来-->
+        <result property="stageType" column="stage_type"/>
+        <!--统计日期-->
+        <result property="calcDate" column="calc_date"/>
+        <!--阶段涨幅-->
+        <result property="stageRate" column="stage_rate"/>
+        <!---->
+        <result property="avgRate" column="avg_rate"/>
+        <!--沪深300-->
+        <result property="hushen300" column="hushen300"/>
+        <!--同类排名-->
+        <result property="sort" column="sort"/>
+        <!--总共-->
+        <result property="total" column="total"/>
+        <!--四分位排名-->
+        <result property="ranking" column="ranking"/>
+        <!--得分-->
+        <result property="score" column="score"/>
+    </resultMap>
+
+
+    <!-- 通用查询结果列-->
+    <sql id="all_column">
+        id, fund_code, stage_type, calc_date, stage_rate, avg_rate, hushen300, sort, total, ranking, score
+    </sql>
+
+    <delete id="deleteCurData">
+        delete from fund_stage where calc_date = #{curDate} and fund_code in
+        <foreach collection="fundCodeList" index="index" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO fund_stage (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.fundCode},
+            #{pojo.stageType},
+            #{pojo.calcDate},
+            #{pojo.stageRate},
+            #{pojo.avgRate},
+            #{pojo.hushen300},
+            #{pojo.sort},
+            #{pojo.total},
+            #{pojo.ranking},
+            #{pojo.score}
+            )
+        </foreach>
+    </insert>
+
+</mapper>
