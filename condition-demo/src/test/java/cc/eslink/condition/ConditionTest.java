@@ -7,10 +7,13 @@ import cc.eslink.condition.demo3.MainConfig1;
 import cc.eslink.condition.demo4.MainConfig2;
 import cc.eslink.condition.demo5.MainConfig5;
 import cc.eslink.condition.demo6.MainConfig7;
+import cc.eslink.scope.ThreadScope;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  *@ClassName ConditionTest
@@ -71,5 +74,22 @@ public class ConditionTest {
         context.getBeansOfType(String.class).forEach((beanName, bean) -> {
             System.out.println(String.format("%s->%s", beanName, bean));
         });
+    }
+
+    @Test
+    public void test8() throws InterruptedException {
+        String beanXml = "classpath:/beans-thread.xml";
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext();
+        context.setConfigLocation(beanXml);
+        context.refresh();
+        context.getBeanFactory().registerScope(ThreadScope.THREAD_SCOPE, new ThreadScope());
+
+        for (int i = 0; i < 2; i++) {
+            new Thread(() -> {
+                System.out.println(Thread.currentThread() + "," + context.getBean("threadBean"));
+                System.out.println(Thread.currentThread() + "," + context.getBean("threadBean"));
+            }).start();
+            TimeUnit.SECONDS.sleep(1);
+        }
     }
 }

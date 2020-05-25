@@ -16,3 +16,5 @@
 /spring-session/.mvn/wrapper/
 /dataX-demo/target/
 /sql-demo/target/classes/
+/jib/target/
+/md20191202/target/test-classes/
