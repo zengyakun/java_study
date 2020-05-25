@@ -243,7 +243,7 @@ class FundAnalyzeApplicationTests {
     public void saveFundNet() throws InterruptedException {
         long start = System.currentTimeMillis();
         String startDate = "2019-01-01";
-//        startDate = "2020-05-01";
+        startDate = "2020-05-01";
         List<String> fundCodeList = fundService.queryCodeList();
 //        fundCodeList = Arrays.asList("000727", "121005");
         System.out.println(String.format("查询到%d只基金，耗时%d 毫秒", fundCodeList.size(), (System.currentTimeMillis() - start)));
