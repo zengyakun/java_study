@@ -48,6 +48,9 @@ public class Fund {
     /** 基金经理 */
     private String fundManager;
 
+    /*基金管理人*/
+    private String fundCompany;
+
     public Fund(String fundCode, String fundName) {
         this.fundCode = fundCode;
         this.fundName = fundName;
@@ -63,6 +66,7 @@ public class Fund {
                 ", issueDate=" + issueDate +
                 ", asset=" + asset +
                 ", fundManager='" + fundManager + '\'' +
+                ", fundCompany='" + fundCompany + '\'' +
                 '}';
     }
 }

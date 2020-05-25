@@ -19,12 +19,14 @@
         <result property="asset" column="asset"/>
         <!--基金经理-->
         <result property="fundManager" column="fund_manager"/>
+        <!--基金管理人-->
+        <result property="fundCompany" column="fund_company"/>
     </resultMap>
 
 
     <!-- 通用查询结果列-->
     <sql id="all_column">
-        id, fund_code, fund_name, fund_type, issue_date, asset, fund_manager
+        id, fund_code, fund_name, fund_type, issue_date, asset, fund_manager, fund_company
     </sql>
 
     <!--auto generated Code-->
@@ -36,7 +38,9 @@
                 #{pojo.fundType},
                 #{pojo.issueDate},
                 #{pojo.asset},
-                #{pojo.fundManager})
+                #{pojo.fundManager},
+                #{pojo.fundCompany}
+                )
     </insert>
 
     <!--auto generated Code-->
@@ -52,7 +56,8 @@
             #{pojo.fundType},
             #{pojo.issueDate},
             #{pojo.asset},
-            #{pojo.fundManager}
+            #{pojo.fundManager},
+            #{pojo.fundCompany}
             )
         </foreach>
     </insert>
@@ -65,7 +70,8 @@
             <if test="pojo.fundType != null">`fund_type` = #{pojo.fundType},</if>
             <if test="pojo.issueDate != null">`issue_date` = #{pojo.issueDate},</if>
             <if test="pojo.asset != null">`asset` = #{pojo.asset},</if>
-            <if test="pojo.fundManager != null">`fund_manager` = #{pojo.fundManager}</if>
+            <if test="pojo.fundManager != null">`fund_manager` = #{pojo.fundManager},</if>
+            <if test="pojo.fundCompany != null">`fund_company` = #{pojo.fundCompany}</if>
         </set>
         WHERE fund_code = #{pojo.fundCode}
     </update>

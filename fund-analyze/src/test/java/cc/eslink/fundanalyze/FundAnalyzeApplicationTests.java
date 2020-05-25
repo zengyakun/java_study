@@ -209,17 +209,20 @@ class FundAnalyzeApplicationTests {
                         if (StringUtils.isBlank(text)) {
                             continue;
                         }
-                        if ("发行日期".equals(tr.child(i).text())) {
+                        String title = tr.child(i).text();
+                        if ("发行日期".equals(title)) {
                             fund.setIssueDate(new Timestamp(DateUtil.StringToDate(text).getTime()));
-                        } else if ("资产规模".equals(tr.child(i).text())) {
+                        } else if ("资产规模".equals(title)) {
                             String number = StringUtil.getNumber(text);
                             if (StringUtils.isNotBlank(number)) {
                                 fund.setAsset(Double.valueOf(number));
                             }
-                        } else if ("基金经理人".equals(tr.child(i).text())) {
+                        } else if ("基金经理人".equals(title)) {
                             fund.setFundManager(text);
-                        } else if ("基金类型".equals(tr.child(i).text())) {
+                        } else if ("基金类型".equals(title)) {
                             fund.setFundType(text);
+                        } else if ("基金管理人".equals(title)) {
+                            fund.setFundCompany(text);
                         }
                     }
                 }
